@@ -1,0 +1,3 @@
+﻿Module ModConst
+
+End Module
