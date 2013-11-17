@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+
+
             this.SuspendLayout();
+
             // 
             // FormGame
             // 
@@ -43,6 +46,7 @@
         }
 
         #endregion
+
 
     }
 }

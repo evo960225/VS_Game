@@ -12,11 +12,19 @@ namespace 簡易RPG {
 
         const string AdrImg = "..//..//images//人物.png";
 
+        const int ImgX = 50;
+        const int ImgY = 50;
+
         private string name;
         private int hp;
         private int sp;
         private int atk;
         private int def;
+
+        private int locX = 10;
+        private int locY = 7;
+        private int picLocX = 500;
+        private int picLocY = 350;
 
         public PictureBox pic;
         private Bitmap img = new Bitmap(AdrImg);
@@ -32,6 +40,14 @@ namespace 簡易RPG {
             sp = s;
             atk = a;
             def = d;
+        }
+
+        public int getLocX {
+            get { return picLocX; }
+        }
+
+        public int getLocY {
+            get{return picLocY; }
         }
 
         public void saveToText() {
@@ -61,6 +77,20 @@ namespace 簡易RPG {
             pic.Size = new Size(50, 50);
             pic.Location = new Point(500, 350);
             pic.Image = img;
+        }
+
+        public void move(int keyCode) {
+
+            if(keyCode == 37 && picLocX != 0) {
+                picLocX -= ImgX;
+            } else if(keyCode == 38 && picLocY != 0) {
+                picLocY -= ImgY;
+            } else if(keyCode == 39 && picLocX != FormGame.SizeX - ImgX) {
+                picLocX += ImgX;
+            } else if(keyCode == 40 && picLocY != FormGame.SizeY - ImgY) {
+                picLocY += ImgY;
+            }
+            pic.Location = new Point(picLocX, picLocY);
         }
     }
 }

@@ -82,7 +82,7 @@ namespace 簡易RPG {
             }
         }
 
-        public void move(int vec) {
+        public bool move(int vec) {
 
             if(vec == 0 && locX != 0) {
                 --locX; 
@@ -92,13 +92,17 @@ namespace 簡易RPG {
                 ++locX;
             } else if(vec == 3 && locY + SizeY != bigSizeY) {
                 ++locY;
+            } else {
+                return false;
             }
+
             for(int i = 0; i < SizeY; ++i) {
                 for(int j = 0; j < SizeX; ++j) {
                     pic[i, j].Image = img[arrBigMap[i + locY, j + locX]];
                 }
             }
 
+            return true;
         }
     }
 }
