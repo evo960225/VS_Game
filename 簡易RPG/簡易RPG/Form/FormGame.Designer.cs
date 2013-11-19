@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(999, 701);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "FormGame";
             this.Text = "FormGame";
             this.Load += new System.EventHandler(this.FormGame_Load);
@@ -46,6 +51,9 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer1;
+
 
 
     }

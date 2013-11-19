@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace 簡易RPG {
     public class Player {
 
-        const string AdrImg = "..//..//images//人物.png";
+        const string AdrImg = "..//..//images//人物2.png";
 
         const int ImgX = 50;
         const int ImgY = 50;
@@ -26,7 +26,7 @@ namespace 簡易RPG {
         private int picLocX = 500;
         private int picLocY = 350;
 
-        public PictureBox pic;
+        public Label pic;
         private Bitmap img = new Bitmap(AdrImg);
         
 
@@ -72,7 +72,7 @@ namespace 簡易RPG {
         }
 
         public void createPic() {
-            pic = new PictureBox();
+            pic = new Label();
             pic.Name = "picPly";
             pic.Size = new Size(50, 50);
             pic.Location = new Point(500, 350);

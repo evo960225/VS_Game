@@ -192,7 +192,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tetName);
             this.Controls.Add(this.butCreatePly);
+            this.Location = new System.Drawing.Point(500, 300);
             this.Name = "FormNewPly";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "建立你的角色";
             this.Load += new System.EventHandler(this.formMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numA)).EndInit();

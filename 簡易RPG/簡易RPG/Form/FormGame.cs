@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using WindowsFormsControlLibrary;
+
+
 //using System.Data;
 //using System.Data.SqlClient;
 //using System.Data.SqlTypes;
@@ -17,12 +20,14 @@ namespace 簡易RPG
 {
     public partial class FormGame : Form
     {
+        
         public const int SizeX = 1000;
         public const int SizeY = 700;
 
         Map map=new Map();
         Player ply = new Player();
-
+        NPC npc = new NPC(false);
+        EscPanel Esc;
         public FormGame() {
             InitializeComponent();
         }
@@ -35,74 +40,57 @@ namespace 簡易RPG
                     this.Controls.Add(map.pic[i, j]);
                 }
             }
-            //this.Controls.Add(map.pi);
 
             ply.loadPly();
             this.Controls.Add(ply.pic);
             ply.pic.BringToFront();
+            this.Controls.Add(npc.pic);
+            npc.pic.BringToFront();
+
         }
-
-
-        const int KEYDOWN = 0x100;
-        bool ismove;
+        
         int keycode;
+        const int KEYDOWN = 0x100;
         const int KEY_LEFT = 37;
         const int KEY_DOWN = 40;
         const int KEY_ESC = 27;
         protected override void WndProc(ref Message m) {
 
-            base.WndProc(ref m);
-
             if(m.Msg == KEYDOWN) {
                 keycode = (int)m.WParam;
                 if(keycode >= KEY_LEFT && keycode <= KEY_DOWN) {
                     move(keycode);
-                } else if(keycode ==KEY_ESC) {
-
+                } else if(keycode == KEY_ESC) {
+                    Esc = new EscPanel();
+                    Esc.Location = new Point(400, 300);
+                    this.Controls.Add(Esc);
+                    Esc.BringToFront();
+                    //Esc.
                 }
-
-                
             }
+            base.WndProc(ref m);
         }
 
          public void move(int code){
-             bool mapMove = false;
-             if(code == 37) {
-                 if(ply.getLocX > 500) {
-                     ply.move(code);
-                 } else {
-                     mapMove=true;
-                 }
-             }else if(code==38){
-                 if(ply.getLocY > 350) {
-                     ply.move(code);
-                 }else {
-                     mapMove=true;
-                 }
-             }else if(code==39){
-                 if(ply.getLocX < 500) {
-                     ply.move(code);
-                 }else {
-                     mapMove=true;
-                 }
-             }else{
-                 if(ply.getLocY < 350) {
-                     ply.move(code);
-                 }else {
-                     mapMove = true;
-                 }
-             }
-             if(mapMove) {
-                 ismove = map.move(code - 37);
-                 if(!ismove) {
-                     ply.move(code);
-                 }
-             }
 
+             bool mapMove = true;
+             if(code == 37 && ply.getLocX > 500) {
+                     mapMove = false;
+             }else if(code==38 && ply.getLocY > 350){
+                     mapMove = false;
+             }else if(code==39 && ply.getLocX < 500){
+                     mapMove = false;
+             } else if (code == 40 && ply.getLocY < 350) {
+                 mapMove = false;
+             }
+             if (mapMove && !map.move(code - 37) || (!mapMove)) {
+                 ply.move(code);
+             }
         }
 
-        
+         private void timer1_Tick(object sender, EventArgs e) {
 
+         }
 
     }
 }
