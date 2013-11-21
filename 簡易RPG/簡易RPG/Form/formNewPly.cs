@@ -31,6 +31,10 @@ namespace 簡易RPG {
             formgame = new FormGame();
             formgame.Visible = true;
         }
+
+        private void escPanel1_Load(object sender, EventArgs e) {
+           
+        }
     }
 }
 
