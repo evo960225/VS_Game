@@ -12,13 +12,16 @@ namespace WindowsFormsControlLibrary
 {
     public partial class EscPanel: UserControl
     {
+        //public event EventHandler TaxTextChanged; 
+        //public delegate void myDelegate(string welkin);
+        //public event myDelegate welkinEvent;
         public EscPanel()
         {
             InitializeComponent();
         }
 
         private void EscPanel_Load(object sender, EventArgs e) {
-
+           
         }
 
         private void EscPanel_DragDrop(object sender, DragEventArgs e) {

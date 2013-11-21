@@ -40,6 +40,7 @@
             this.butContinue.Name = "butContinue";
             this.butContinue.Size = new System.Drawing.Size(88, 32);
             this.butContinue.TabIndex = 0;
+            this.butContinue.Tag = "0";
             this.butContinue.Text = "繼續遊戲";
             this.butContinue.UseVisualStyleBackColor = true;
             this.butContinue.Click += new System.EventHandler(this.butContinue_Click);
@@ -51,6 +52,7 @@
             this.butExit.Name = "butExit";
             this.butExit.Size = new System.Drawing.Size(88, 32);
             this.butExit.TabIndex = 0;
+            this.butExit.Tag = "2";
             this.butExit.Text = "離開遊戲";
             this.butExit.UseVisualStyleBackColor = true;
             this.butExit.Click += new System.EventHandler(this.butExit_Click);
@@ -62,6 +64,7 @@
             this.butOption.Name = "butOption";
             this.butOption.Size = new System.Drawing.Size(88, 32);
             this.butOption.TabIndex = 0;
+            this.butOption.Tag = "1";
             this.butOption.Text = "遊戲設定";
             this.butOption.UseVisualStyleBackColor = true;
             // 

@@ -65,7 +65,7 @@ namespace 簡易RPG
                     Esc.Location = new Point(400, 300);
                     this.Controls.Add(Esc);
                     Esc.BringToFront();
-                    //Esc.
+                   
                 }
             }
             base.WndProc(ref m);

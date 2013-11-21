@@ -76,7 +76,9 @@ namespace 簡易RPG {
             pic.Name = "picPly";
             pic.Size = new Size(50, 50);
             pic.Location = new Point(500, 350);
-            pic.Image = img;
+            
+            pic.BackColor = Color.Transparent;
+           // pic.Image = new Image();
         }
 
         public void move(int keyCode) {
