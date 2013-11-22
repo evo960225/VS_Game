@@ -47,8 +47,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ESCPanel">
+      <HintPath>..\RPGControlLibrary\ESC欄\bin\Debug\ESCPanel.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="skillPanel">
+      <HintPath>..\RPGControlLibrary\技能欄\bin\Debug\skillPanel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -176,12 +182,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserControl\WindowsFormsControlLibrary.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsControlLibrary\WindowsFormsControlLibrary\ESC欄.csproj">
-      <Project>{5BB75A33-151E-4766-9DE8-05F1EF2099FC}</Project>
-      <Name>ESC欄</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

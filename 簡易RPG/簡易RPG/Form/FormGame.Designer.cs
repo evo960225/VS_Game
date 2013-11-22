@@ -35,7 +35,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-
             // 
             // FormGame
             // 
@@ -44,6 +43,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(999, 701);
             this.ForeColor = System.Drawing.Color.Black;
+            this.KeyPreview = true;
             this.Name = "FormGame";
             this.Text = "FormGame";
             this.Load += new System.EventHandler(this.FormGame_Load);

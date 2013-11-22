@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.20617.1 PREVIEW
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "簡易RPG", "簡易RPG\簡易RPG.csproj", "{6357A3E7-9D27-44CE-A9BC-FD80B3E595C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESC欄", "WindowsFormsControlLibrary\WindowsFormsControlLibrary\ESC欄.csproj", "{5BB75A33-151E-4766-9DE8-05F1EF2099FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESC欄", "RPGControlLibrary\RPGControlLibrary\ESC欄.csproj", "{5BB75A33-151E-4766-9DE8-05F1EF2099FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

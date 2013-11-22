@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using WindowsFormsControlLibrary;
-
+using 技能欄;
 
 //using System.Data;
 //using System.Data.SqlClient;
@@ -28,6 +28,7 @@ namespace 簡易RPG
         Player ply = new Player();
         NPC npc = new NPC(false);
         EscPanel Esc;
+        skillPanel skill;
         public FormGame() {
             InitializeComponent();
         }
@@ -53,19 +54,32 @@ namespace 簡易RPG
         const int KEYDOWN = 0x100;
         const int KEY_LEFT = 37;
         const int KEY_DOWN = 40;
-        const int KEY_ESC = 27;
+        const int KEY_ESC  = 27;
+        const int KEY_C    = 99;
+        const int KEY_D    = 100;
+
         protected override void WndProc(ref Message m) {
 
             if(m.Msg == KEYDOWN) {
                 keycode = (int)m.WParam;
-                if(keycode >= KEY_LEFT && keycode <= KEY_DOWN) {
+                if (keycode >= KEY_LEFT && keycode <= KEY_DOWN) {
                     move(keycode);
-                } else if(keycode == KEY_ESC) {
+                } else if (keycode == KEY_ESC) {
                     Esc = new EscPanel();
                     Esc.Location = new Point(400, 300);
                     this.Controls.Add(Esc);
                     Esc.BringToFront();
-                   
+                } else if (keycode == (int)Keys.C) {
+                    skill = new skillPanel();
+                    skill.Location = new Point(400, 300);
+                    this.Controls.Add(skill);
+                    skill.BringToFront();
+                } else if (keycode == (int)Keys.D){
+                    skill = new skillPanel();
+                    skill.Location = new Point(400, 300);
+                    this.Controls.Add(skill);
+                    skill.BringToFront();
+                    this.Focus();
                 }
             }
             base.WndProc(ref m);
