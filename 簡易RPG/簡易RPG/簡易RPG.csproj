@@ -47,20 +47,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ESCPanel">
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ESCPanel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\RPGControlLibrary\ESC欄\bin\Debug\ESCPanel.dll</HintPath>
     </Reference>
+    <Reference Include="InventoryPanel">
+      <HintPath>..\RPGControlLibrary\物品欄\bin\Debug\InventoryPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="skillPanel">
+    <Reference Include="QuickSlotPanel">
+      <HintPath>..\RPGControlLibrary\招式欄\bin\Debug\QuickSlotPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="rolePanel">
+      <HintPath>..\RPGControlLibrary\角色欄\bin\Debug\rolePanel.dll</HintPath>
+    </Reference>
+    <Reference Include="skillPanel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\RPGControlLibrary\技能欄\bin\Debug\skillPanel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,21 +88,33 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="物品欄">
+      <HintPath>..\RPGControlLibrary\物品欄\bin\Debug\物品欄.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\NPC.cs" />
     <Compile Include="Class\Map.cs" />
     <Compile Include="Class\Monster.cs" />
     <Compile Include="Class\Player.cs" />
+    <Compile Include="Data\DatabaseDataSet.cs">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Data\DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormLoad.Designer.cs">
+      <DependentUpon>FormLoad.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FormTilie.cs">
       <SubType>Form</SubType>
@@ -110,6 +142,9 @@
     <Compile Include="UserControl\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormLoad.resx">
+      <DependentUpon>FormLoad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormTilie.resx">
       <DependentUpon>FormTilie.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,10 +213,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Database.sdf">
+    <Content Include="Data\Database.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserControl\WindowsFormsControlLibrary.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

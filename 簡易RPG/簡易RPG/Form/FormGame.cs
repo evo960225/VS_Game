@@ -8,17 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using WindowsFormsControlLibrary;
-using 技能欄;
-
-//using System.Data;
-//using System.Data.SqlClient;
-//using System.Data.SqlTypes;
-//using Microsoft.SqlServer.Server;
+using RPGControl;
 
 namespace 簡易RPG
 {
-    public partial class FormGame : Form
+    public partial class FormGame : System.Windows.Forms.Form
     {
         
         public const int SizeX = 1000;
@@ -29,10 +23,15 @@ namespace 簡易RPG
         NPC npc = new NPC(false);
         EscPanel Esc;
         skillPanel skill;
+        rolePanel rolePnl;
+        quickSlotPanel qukPnl;
+
         public FormGame() {
             InitializeComponent();
+            KeyDown += new KeyEventHandler(FormGame_KeyDown);
+            this.KeyPreview = true;
         }
-
+        　
         private void FormGame_Load(object sender, EventArgs e) {
 
             map.create();
@@ -59,28 +58,9 @@ namespace 簡易RPG
         const int KEY_D    = 100;
 
         protected override void WndProc(ref Message m) {
-
+           // this.Focus();
             if(m.Msg == KEYDOWN) {
                 keycode = (int)m.WParam;
-                if (keycode >= KEY_LEFT && keycode <= KEY_DOWN) {
-                    move(keycode);
-                } else if (keycode == KEY_ESC) {
-                    Esc = new EscPanel();
-                    Esc.Location = new Point(400, 300);
-                    this.Controls.Add(Esc);
-                    Esc.BringToFront();
-                } else if (keycode == (int)Keys.C) {
-                    skill = new skillPanel();
-                    skill.Location = new Point(400, 300);
-                    this.Controls.Add(skill);
-                    skill.BringToFront();
-                } else if (keycode == (int)Keys.D){
-                    skill = new skillPanel();
-                    skill.Location = new Point(400, 300);
-                    this.Controls.Add(skill);
-                    skill.BringToFront();
-                    this.Focus();
-                }
             }
             base.WndProc(ref m);
         }
@@ -102,9 +82,71 @@ namespace 簡易RPG
              }
         }
 
-         private void timer1_Tick(object sender, EventArgs e) {
+         void FormGame_KeyDown(object sender, KeyEventArgs e) {
+             
+             int keycode = (int)e.KeyCode;
+             if (keycode>=37 && keycode<=40) {
+                 move(keycode);
+             } else if (keycode >> 4 == 3) {
 
+             } else {
+                 switch (keycode) {
+                     case KEY_ESC:
+                         Esc = new EscPanel();
+                         Esc.Location = new Point(400, 300);
+                         this.Controls.Add(Esc);
+                         Esc.KeyDown += FormGame_KeyDown;
+                         
+                         Esc.BringToFront();
+                         Esc.TabStop = false;
+                         break;
+                         
+                     case (int)Keys.C:
+                         rolePnl = new rolePanel();
+                         rolePnl.Location = new Point(400, 300);
+                         this.Controls.Add(rolePnl);
+                         rolePnl.BringToFront();
+                         this.Focus(); break;
+                     case (int)Keys.D:
+                         skill = new skillPanel();
+                         skill.Location = new Point(400, 300);
+                         this.Controls.Add(skill);
+                         skill.BringToFront();
+                         this.Focus(); break;
+                     case (int)Keys.I:
+                         // Inventory
+                         break;
+                     case (int)Keys.K:
+                         //skill
+                         break;
+                     case (int)Keys.L:
+                         //Quest
+                         break;
+                     case (int)Keys.Q:
+                         qukPnl = new quickSlotPanel();
+                         qukPnl.Location = new Point(400, 300);
+                         this.Controls.Add(qukPnl);
+                         qukPnl.BringToFront();
+                         qukPnl.Focus(); 
+                         break;
+                 }
+                 
+             }
+             
          }
 
+         private void FormGame_KeyPress(object sender, KeyPressEventArgs e) {
+            
+         }
+
+         private void FormGame_KeyUp(object sender, KeyEventArgs e) {
+             
+         }
+
+         private void FormGame_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+             int a = 5;
+         }
     }
+
 }
+

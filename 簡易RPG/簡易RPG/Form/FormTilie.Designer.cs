@@ -41,6 +41,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
+            this.button1.TabStop = false;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -51,7 +52,7 @@
             this.label1.Location = new System.Drawing.Point(172, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 12);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "RPG";
             // 
             // butLoad
@@ -60,9 +61,10 @@
             this.butLoad.Name = "butLoad";
             this.butLoad.Size = new System.Drawing.Size(75, 23);
             this.butLoad.TabIndex = 0;
+            this.butLoad.TabStop = false;
             this.butLoad.Text = "Load";
             this.butLoad.UseVisualStyleBackColor = true;
-            this.butLoad.Click += new System.EventHandler(this.button1_Click);
+            this.butLoad.Click += new System.EventHandler(this.butLoad_Click);
             // 
             // butOptions
             // 
@@ -70,6 +72,7 @@
             this.butOptions.Name = "butOptions";
             this.butOptions.Size = new System.Drawing.Size(75, 23);
             this.butOptions.TabIndex = 0;
+            this.butOptions.TabStop = false;
             this.butOptions.Text = "Options";
             this.butOptions.UseVisualStyleBackColor = true;
             this.butOptions.Click += new System.EventHandler(this.button1_Click);
@@ -80,6 +83,7 @@
             this.butExit.Name = "butExit";
             this.butExit.Size = new System.Drawing.Size(75, 23);
             this.butExit.TabIndex = 0;
+            this.butExit.TabStop = false;
             this.butExit.Text = "Exit";
             this.butExit.UseVisualStyleBackColor = true;
             this.butExit.Click += new System.EventHandler(this.butExit_Click);
@@ -94,10 +98,13 @@
             this.Controls.Add(this.butOptions);
             this.Controls.Add(this.butLoad);
             this.Controls.Add(this.button1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RPG";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 招式欄
+namespace RPGControl
 {
     public partial class quickSlotPanel: UserControl
     {
@@ -19,6 +19,10 @@ namespace 招式欄
 
         private void label11_Click(object sender, EventArgs e) {
             this.Hide();
+        }
+
+        private void quickSlotPanel_Load(object sender, EventArgs e) {
+
         }
     }
 }

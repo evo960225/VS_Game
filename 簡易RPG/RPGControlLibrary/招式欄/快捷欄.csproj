@@ -7,7 +7,7 @@
     <ProjectGuid>{B446FEE4-C7AF-4373-99A4-2F8F5E7D5B43}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuickSlotPanel</RootNamespace>
+    <RootNamespace>RPGControl</RootNamespace>
     <AssemblyName>QuickSlotPanel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

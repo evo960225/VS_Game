@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsControlLibrary;
+
 namespace 簡易RPG
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         FormNewPly fm = new FormNewPly();
+        FormLoad fl = new FormLoad();
         public Form1()
         {
             InitializeComponent();
@@ -29,17 +30,27 @@ namespace 簡易RPG
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            /*WindowsFormsControlLibrary.EscPanel.
-            foreach (Control a in escPanel1.Controls) {
-                a.KeyDown(a, new EventArgs())+=a;
-            }*/
         }
 
-        private void escPanel1_Load(object sender, EventArgs e) {
 
-        }
 
         private void button2_Click(object sender, EventArgs e) {
+
+        }
+
+        private void butLoad_Click(object sender, EventArgs e) {
+            fl.Visible = true;
+            this.Hide();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e) {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e) {
+            int a;
+            a = 1;
+            this.Focus();
 
         }
     }

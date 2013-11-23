@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 角色欄
+namespace RPGControl
 {
     public partial class rolePanel: UserControl
     {
@@ -20,5 +20,30 @@ namespace 角色欄
         private void butEnter_Click(object sender, EventArgs e) {
             this.Hide();
         }
+
+        private void labExit_Click(object sender, EventArgs e) {
+            this.Hide();
+        }
+
+        bool isMouseDown;
+        int locDX,locDY;
+        private void labTitle_MouseDown(object sender, MouseEventArgs e) {
+            isMouseDown = true;
+            locDX = e.X;
+            locDY = e.Y;
+        }
+
+        private void labTitle_MouseUp(object sender, MouseEventArgs e) {
+            isMouseDown = false;
+        }
+
+        private void labTitle_MouseMove(object sender, MouseEventArgs e) {
+            if (isMouseDown) {
+                int x = e.X - locDX;
+                int y = e.Y - locDY;
+                this.Location = new Point(this.Location.X + x, this.Location.Y + y);
+            }
+        }
+
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 技能欄
+namespace RPGControl
 {
     public partial class skillPanel: UserControl
     {
@@ -36,6 +36,18 @@ namespace 技能欄
                 int y = e.Y - locDY;
                 this.Location = new Point(this.Location.X + x, this.Location.Y + y);
             }
+        }
+
+        private void labTitle_Click(object sender, EventArgs e) {
+
+        }
+
+        private void labExit_Click(object sender, EventArgs e) {
+            this.Hide();
+        }
+
+        private void butStr1_Click(object sender, EventArgs e) {
+
         }
 
     }

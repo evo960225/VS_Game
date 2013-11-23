@@ -7,7 +7,7 @@
     <ProjectGuid>{5BB75A33-151E-4766-9DE8-05F1EF2099FC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ESCPanel</RootNamespace>
+    <RootNamespace>RPGControl</RootNamespace>
     <AssemblyName>ESCPanel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,16 +43,26 @@
   <ItemGroup>
     <Compile Include="EscPanel.cs">
       <SubType>UserControl</SubType>
+      <CustomToolNamespace>RPGControls</CustomToolNamespace>
     </Compile>
     <Compile Include="EscPanel.Designer.cs">
       <DependentUpon>EscPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EscPanel.resx">
       <DependentUpon>EscPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

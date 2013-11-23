@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 簡易RPG.Class {
-    class Class1 {
+namespace 裝備攔
+{
+    public class Class1
+    {
     }
 }

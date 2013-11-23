@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.butCreatePly = new System.Windows.Forms.Button();
             this.tetName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,10 +40,15 @@
             this.numHP = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.numSP = new System.Windows.Forms.NumericUpDown();
+            this.databaseDataSet = new 簡易RPG.Data.DatabaseDataSet();
+            this.rolenameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.role_nameTableAdapter = new 簡易RPG.Data.DatabaseDataSetTableAdapters.role_nameTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.numA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolenameBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // butCreatePly
@@ -176,6 +182,20 @@
             0,
             0});
             // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rolenameBindingSource
+            // 
+            this.rolenameBindingSource.DataMember = "role_name";
+            this.rolenameBindingSource.DataSource = this.databaseDataSet;
+            // 
+            // role_nameTableAdapter
+            // 
+            this.role_nameTableAdapter.ClearBeforeFill = true;
+            // 
             // FormNewPly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -192,6 +212,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tetName);
             this.Controls.Add(this.butCreatePly);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rolenameBindingSource, "rname", true));
             this.Location = new System.Drawing.Point(500, 300);
             this.Name = "FormNewPly";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -201,6 +222,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rolenameBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +242,8 @@
         private System.Windows.Forms.NumericUpDown numHP;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numSP;
+        private Data.DatabaseDataSet databaseDataSet;
+        private System.Windows.Forms.BindingSource rolenameBindingSource;
+        private Data.DatabaseDataSetTableAdapters.role_nameTableAdapter role_nameTableAdapter;
     }
 }

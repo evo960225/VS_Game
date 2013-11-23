@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 物品欄
+namespace RPGControl
 {
-    public partial class InventoryPanle: UserControl
+    public partial class InventoryPanel: UserControl
     {
-        public InventoryPanle()
+        public InventoryPanel()
         {
             InitializeComponent();
         }
