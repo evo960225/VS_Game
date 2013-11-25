@@ -38,7 +38,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labExit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -141,24 +141,25 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "0";
             // 
-            // label11
+            // labExit
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(384, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(17, 17);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "X";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.labExit.AutoSize = true;
+            this.labExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labExit.ForeColor = System.Drawing.Color.Black;
+            this.labExit.Location = new System.Drawing.Point(384, 0);
+            this.labExit.Name = "labExit";
+            this.labExit.Size = new System.Drawing.Size(17, 17);
+            this.labExit.TabIndex = 1;
+            this.labExit.Text = "X";
+            this.labExit.Click += new System.EventHandler(this.labExit_Click);
+            this.labExit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.quickSlotPanel_MouseDown);
             // 
             // quickSlotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.labExit);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -172,6 +173,9 @@
             this.Name = "quickSlotPanel";
             this.Size = new System.Drawing.Size(400, 42);
             this.Load += new System.EventHandler(this.quickSlotPanel_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.quickSlotPanel_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.quickSlotPanel_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.quickSlotPanel_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,6 +193,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labExit;
     }
 }

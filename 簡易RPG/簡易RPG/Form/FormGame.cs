@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using RPGControl;
+using System.Runtime.InteropServices;
 
 namespace 簡易RPG
 {
@@ -21,17 +22,40 @@ namespace 簡易RPG
         Map map=new Map();
         Player ply = new Player();
         NPC npc = new NPC(false);
-        EscPanel Esc;
-        skillPanel skill;
-        rolePanel rolePnl;
-        quickSlotPanel qukPnl;
+        EscPanel Esc = new EscPanel();
+        skillPanel skill = new skillPanel();
+        rolePanel rolePnl = new rolePanel();
+        quickSlotPanel qukPnl = new quickSlotPanel();
+        InventoryPanel invPnl = new InventoryPanel();
+        KeyMessageFilter filter;
+
 
         public FormGame() {
             InitializeComponent();
-            KeyDown += new KeyEventHandler(FormGame_KeyDown);
-            this.KeyPreview = true;
+            filter = new KeyMessageFilter(this);
+            // add the filter
+            Application.AddMessageFilter(filter);
+
+
+            Esc.Visible = false;
+            rolePnl.Visible = false;
+            skill.Visible = false;
+            qukPnl.Visible = false;
+            invPnl.Visible = false;
+            this.Controls.Add(Esc);
+            this.Controls.Add(rolePnl);
+            this.Controls.Add(skill);
+            this.Controls.Add(qukPnl);
+            this.Controls.Add(invPnl);
+
         }
-        　
+
+        protected override void OnFormClosed(FormClosedEventArgs e) {
+            base.OnFormClosed(e);
+            Application.Exit();
+ 
+        }
+
         private void FormGame_Load(object sender, EventArgs e) {
 
             map.create();
@@ -40,7 +64,6 @@ namespace 簡易RPG
                     this.Controls.Add(map.pic[i, j]);
                 }
             }
-
             ply.loadPly();
             this.Controls.Add(ply.pic);
             ply.pic.BringToFront();
@@ -48,7 +71,8 @@ namespace 簡易RPG
             npc.pic.BringToFront();
 
         }
-        
+
+        #region
         int keycode;
         const int KEYDOWN = 0x100;
         const int KEY_LEFT = 37;
@@ -56,9 +80,9 @@ namespace 簡易RPG
         const int KEY_ESC  = 27;
         const int KEY_C    = 99;
         const int KEY_D    = 100;
+        #endregion
 
         protected override void WndProc(ref Message m) {
-           // this.Focus();
             if(m.Msg == KEYDOWN) {
                 keycode = (int)m.WParam;
             }
@@ -82,71 +106,82 @@ namespace 簡易RPG
              }
         }
 
-         void FormGame_KeyDown(object sender, KeyEventArgs e) {
-             
-             int keycode = (int)e.KeyCode;
-             if (keycode>=37 && keycode<=40) {
+         public void KeyProcessing(int keycode) {
+             if (keycode >= 37 && keycode <= 40) {
                  move(keycode);
              } else if (keycode >> 4 == 3) {
 
              } else {
                  switch (keycode) {
                      case KEY_ESC:
-                         Esc = new EscPanel();
                          Esc.Location = new Point(400, 300);
-                         this.Controls.Add(Esc);
-                         Esc.KeyDown += FormGame_KeyDown;
-                         
-                         Esc.BringToFront();
-                         Esc.TabStop = false;
-                         break;
-                         
+                         Esc.Show();
+                         Esc.BringToFront();break;
                      case (int)Keys.C:
-                         rolePnl = new rolePanel();
-                         rolePnl.Location = new Point(400, 300);
-                         this.Controls.Add(rolePnl);
-                         rolePnl.BringToFront();
-                         this.Focus(); break;
+                         rolePnl.Show();
+                         rolePnl.BringToFront();break;
                      case (int)Keys.D:
-                         skill = new skillPanel();
-                         skill.Location = new Point(400, 300);
-                         this.Controls.Add(skill);
-                         skill.BringToFront();
-                         this.Focus(); break;
+                         break;
                      case (int)Keys.I:
-                         // Inventory
-                         break;
+                         invPnl.Show();
+                         invPnl.BringToFront();break;
                      case (int)Keys.K:
-                         //skill
-                         break;
+                         skill.Show();
+                         skill.BringToFront(); break;
                      case (int)Keys.L:
                          //Quest
                          break;
                      case (int)Keys.Q:
-                         qukPnl = new quickSlotPanel();
-                         qukPnl.Location = new Point(400, 300);
-                         this.Controls.Add(qukPnl);
-                         qukPnl.BringToFront();
-                         qukPnl.Focus(); 
-                         break;
+                         qukPnl.Location = new Point(350, 650);
+                         qukPnl.Show();
+                         qukPnl.BringToFront();break;
                  }
-                 
+
              }
-             
-         }
-
-         private void FormGame_KeyPress(object sender, KeyPressEventArgs e) {
-            
-         }
-
-         private void FormGame_KeyUp(object sender, KeyEventArgs e) {
-             
-         }
-
-         private void FormGame_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
-             int a = 5;
          }
     }
 
+    public class KeyMessageFilter : IMessageFilter {
+        private enum KeyMessages {
+            WM_KEYFIRST = 0x100,
+            WM_KEYDOWN = 0x100,
+            WM_KEYUP = 0x101,
+            WM_CHAR = 0x102,
+            WM_SYSKEYDOWN = 0x0104,
+            WM_SYSKEYUP = 0x0105,
+            WM_SYSCHAR = 0x0106,
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetParent(IntPtr hwnd);
+
+        Control _control;
+
+        public KeyMessageFilter() { }
+
+        public KeyMessageFilter(Control c) {
+            _control = c;
+        }
+
+        public bool PreFilterMessage(ref Message m) {
+            if (m.Msg == (int)KeyMessages.WM_KEYDOWN) {
+                if (_control != null) {
+                    IntPtr hwnd = m.HWnd;
+                    IntPtr handle = _control.Handle;
+                    while (hwnd != IntPtr.Zero && handle != hwnd) {
+                        hwnd = GetParent(hwnd);
+                    }
+                    if (hwnd == IntPtr.Zero) // Didn't found the window. We are not interested in the event.
+                        return false;
+                }
+                Keys key = (Keys)m.WParam;
+                FormGame f;
+                f = (FormGame)_control;
+                f.KeyProcessing((int)key);
+            }
+            return false;
+        }
+    }
 }
+
 

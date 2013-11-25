@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace 簡易RPG
 {
-    public partial class Form1 : System.Windows.Forms.Form
+    public partial class FormTitle : System.Windows.Forms.Form
     {
         FormNewPly fm = new FormNewPly();
         FormLoad fl = new FormLoad();
-        public Form1()
+        public FormTitle()
         {
             InitializeComponent();
         }
@@ -29,9 +29,11 @@ namespace 簡易RPG
             this.Dispose();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-        }
+        protected override void OnFormClosed(FormClosedEventArgs e) {
+            base.OnFormClosed(e);
+            Application.Exit();
 
+        }
 
 
         private void button2_Click(object sender, EventArgs e) {

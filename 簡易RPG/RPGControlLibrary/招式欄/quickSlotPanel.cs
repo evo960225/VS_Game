@@ -17,12 +17,36 @@ namespace RPGControl
             InitializeComponent();
         }
 
-        private void label11_Click(object sender, EventArgs e) {
+        private void labExit_Click(object sender, EventArgs e) {
             this.Hide();
         }
 
         private void quickSlotPanel_Load(object sender, EventArgs e) {
 
         }
+
+        bool isMouseDown;
+        int locDX, locDY;
+        private void quickSlotPanel_MouseDown(object sender, MouseEventArgs e) {
+            isMouseDown = true;
+            locDX = e.X;
+            locDY = e.Y;
+        }
+
+        private void quickSlotPanel_MouseUp(object sender, MouseEventArgs e) {
+            isMouseDown = false;
+        }
+
+        private void quickSlotPanel_MouseMove(object sender, MouseEventArgs e) {
+            if (isMouseDown) {
+                int x = e.X - locDX;
+                int y = e.Y - locDY;
+                this.Location = new Point(this.Location.X + x, this.Location.Y + y);
+            }
+        }
+
+ 
+
+
     }
 }

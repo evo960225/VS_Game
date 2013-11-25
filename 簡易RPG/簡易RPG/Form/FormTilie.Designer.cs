@@ -1,6 +1,6 @@
 ﻿namespace 簡易RPG
 {
-    partial class Form1
+    partial class FormTitle
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -28,32 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.butStart = new System.Windows.Forms.Button();
+            this.labTitle = new System.Windows.Forms.Label();
             this.butLoad = new System.Windows.Forms.Button();
             this.butOptions = new System.Windows.Forms.Button();
             this.butExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // butStart
             // 
-            this.button1.Location = new System.Drawing.Point(144, 118);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.TabStop = false;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.butStart.Location = new System.Drawing.Point(144, 118);
+            this.butStart.Name = "butStart";
+            this.butStart.Size = new System.Drawing.Size(75, 23);
+            this.butStart.TabIndex = 0;
+            this.butStart.TabStop = false;
+            this.butStart.Text = "Start";
+            this.butStart.UseVisualStyleBackColor = true;
+            this.butStart.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // labTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 63);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "RPG";
+            this.labTitle.AutoSize = true;
+            this.labTitle.Font = new System.Drawing.Font("微軟正黑體", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(136)));
+            this.labTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labTitle.Location = new System.Drawing.Point(135, 41);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(104, 50);
+            this.labTitle.TabIndex = 0;
+            this.labTitle.Text = "RPG";
             // 
             // butLoad
             // 
@@ -88,21 +90,20 @@
             this.butExit.UseVisualStyleBackColor = true;
             this.butExit.Click += new System.EventHandler(this.butExit_Click);
             // 
-            // Form1
+            // FormTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 261);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labTitle);
             this.Controls.Add(this.butExit);
             this.Controls.Add(this.butOptions);
             this.Controls.Add(this.butLoad);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.butStart);
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "FormTitle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RPG";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.ResumeLayout(false);
@@ -112,8 +113,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button butStart;
+        private System.Windows.Forms.Label labTitle;
         private System.Windows.Forms.Button butLoad;
         private System.Windows.Forms.Button butOptions;
         private System.Windows.Forms.Button butExit;

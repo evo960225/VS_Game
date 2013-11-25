@@ -43,10 +43,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormGame";
             this.Load += new System.EventHandler(this.FormGame_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormGame_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormGame_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormGame_KeyUp);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormGame_PreviewKeyDown);
             this.ResumeLayout(false);
 
         }
