@@ -26,14 +26,11 @@ namespace 簡易RPG {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            
-
-
 
             ply = new Player(tetName.Text, (int)numHP.Value, (int)numSP.Value, (int)numA.Value, (int)numD.Value);
             ply.saveToText();
             this.Hide();
-            formgame = new FormGame();
+            formgame = new FormGame(ply);
             formgame.Visible = true;
         }
 

@@ -50,9 +50,6 @@ namespace 簡易RPG
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
-            int a;
-            a = 1;
-            this.Focus();
 
         }
     }

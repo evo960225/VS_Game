@@ -100,6 +100,8 @@
     <Compile Include="Class\NPC.cs" />
     <Compile Include="Class\Map.cs" />
     <Compile Include="Class\Monster.cs" />
+    <Compile Include="Class\Numerical.cs" />
+    <Compile Include="Class\Organism.cs" />
     <Compile Include="Class\Player.cs" />
     <Compile Include="Data\DatabaseDataSet.cs">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
@@ -136,12 +138,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form\FormLoad.resx">
       <DependentUpon>FormLoad.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,9 +159,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControl\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Data\DatabaseDataSet.xsc">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </None>
@@ -216,10 +209,12 @@
     <Content Include="Data\Database.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UserControl\WindowsFormsControlLibrary.dll" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,20 +12,9 @@ namespace RPGControl
 {
     public partial class EscPanel: UserControl
     {
-        //public event EventHandler TaxTextChanged; 
-        //public delegate void myDelegate(string welkin);
-        //public event myDelegate welkinEvent;
-        public EscPanel()
-        {
+
+        public EscPanel() {
             InitializeComponent();
-        }
-
-        private void EscPanel_Load(object sender, EventArgs e) {
-           
-        }
-
-        private void EscPanel_DragDrop(object sender, DragEventArgs e) {
-            
         }
 
         private void butExit_Click(object sender, EventArgs e) {
@@ -35,7 +24,6 @@ namespace RPGControl
         private void butContinue_Click(object sender, EventArgs e) {
             this.Visible = false;
         }
-
 
         bool isMouseDown;
         int locDX, locDY;
@@ -59,6 +47,14 @@ namespace RPGControl
 
         private void labExit(object sender, EventArgs e) {
             this.Hide();
+        }
+
+        private void butBack_Click(object sender, EventArgs e) {
+
+        }
+
+        public void formBack_Show(object form,Type t) {
+            //
         }
     }
 }

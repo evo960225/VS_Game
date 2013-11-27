@@ -77,7 +77,6 @@
             this.butOptions.TabStop = false;
             this.butOptions.Text = "Options";
             this.butOptions.UseVisualStyleBackColor = true;
-            this.butOptions.Click += new System.EventHandler(this.button1_Click);
             // 
             // butExit
             // 

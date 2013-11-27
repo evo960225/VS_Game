@@ -20,22 +20,26 @@ namespace 簡易RPG
         public const int SizeY = 700;
 
         Map map=new Map();
-        Player ply = new Player();
+        Player ply ;
         NPC npc = new NPC(false);
+        Monster monster = new Monster();
+
         EscPanel Esc = new EscPanel();
         skillPanel skill = new skillPanel();
         rolePanel rolePnl = new rolePanel();
         quickSlotPanel qukPnl = new quickSlotPanel();
         InventoryPanel invPnl = new InventoryPanel();
+
         KeyMessageFilter filter;
 
 
-        public FormGame() {
+        public FormGame(Player rply) {
             InitializeComponent();
             filter = new KeyMessageFilter(this);
-            // add the filter
             Application.AddMessageFilter(filter);
 
+            ply = rply;
+            rolePnl.loadNum(ply.numerical.name, ply.numerical.lv, ply.numerical.hp, ply.numerical.sp, ply.numerical.hp, ply.numerical.sp, ply.numerical.atk, ply.numerical.def, 0, 0, 0, 0);
 
             Esc.Visible = false;
             rolePnl.Visible = false;
@@ -69,6 +73,8 @@ namespace 簡易RPG
             ply.pic.BringToFront();
             this.Controls.Add(npc.pic);
             npc.pic.BringToFront();
+            this.Controls.Add(monster.pic);
+            monster.pic.BringToFront();
 
         }
 

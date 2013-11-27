@@ -260,7 +260,7 @@
             // 
             // labTitle
             // 
-            this.labTitle.BackColor = System.Drawing.Color.DarkRed;
+            this.labTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.labTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.labTitle.ForeColor = System.Drawing.Color.White;
             this.labTitle.Location = new System.Drawing.Point(0, 0);
@@ -275,7 +275,7 @@
             // 
             // labExit
             // 
-            this.labExit.BackColor = System.Drawing.Color.DarkRed;
+            this.labExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.labExit.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labExit.ForeColor = System.Drawing.Color.White;
             this.labExit.Location = new System.Drawing.Point(231, 4);

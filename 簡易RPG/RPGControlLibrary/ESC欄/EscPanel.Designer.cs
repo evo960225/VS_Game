@@ -34,6 +34,7 @@
             this.butOption = new System.Windows.Forms.Button();
             this.labTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.butBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // butContinue
@@ -51,7 +52,7 @@
             // butExit
             // 
             this.butExit.ForeColor = System.Drawing.Color.Black;
-            this.butExit.Location = new System.Drawing.Point(50, 147);
+            this.butExit.Location = new System.Drawing.Point(50, 187);
             this.butExit.Name = "butExit";
             this.butExit.Size = new System.Drawing.Size(88, 32);
             this.butExit.TabIndex = 0;
@@ -63,7 +64,7 @@
             // butOption
             // 
             this.butOption.ForeColor = System.Drawing.Color.Black;
-            this.butOption.Location = new System.Drawing.Point(50, 100);
+            this.butOption.Location = new System.Drawing.Point(50, 97);
             this.butOption.Name = "butOption";
             this.butOption.Size = new System.Drawing.Size(88, 32);
             this.butOption.TabIndex = 0;
@@ -99,6 +100,18 @@
             this.label1.Text = "X";
             this.label1.Click += new System.EventHandler(this.labExit);
             // 
+            // butBack
+            // 
+            this.butBack.ForeColor = System.Drawing.Color.Black;
+            this.butBack.Location = new System.Drawing.Point(50, 142);
+            this.butBack.Name = "butBack";
+            this.butBack.Size = new System.Drawing.Size(88, 32);
+            this.butBack.TabIndex = 0;
+            this.butBack.Tag = "1";
+            this.butBack.Text = "返回主畫面";
+            this.butBack.UseVisualStyleBackColor = true;
+            this.butBack.Click += new System.EventHandler(this.butBack_Click);
+            // 
             // EscPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -106,13 +119,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labTitle);
+            this.Controls.Add(this.butBack);
             this.Controls.Add(this.butOption);
             this.Controls.Add(this.butExit);
             this.Controls.Add(this.butContinue);
             this.Name = "EscPanel";
-            this.Size = new System.Drawing.Size(193, 209);
-            this.Load += new System.EventHandler(this.EscPanel_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.EscPanel_DragDrop);
+            this.Size = new System.Drawing.Size(193, 250);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Button butOption;
         private System.Windows.Forms.Label labTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button butBack;
     }
 }

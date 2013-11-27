@@ -54,12 +54,16 @@
             // 
             // labTitle
             // 
-            this.labTitle.BackColor = System.Drawing.Color.Maroon;
+            this.labTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.labTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labTitle.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labTitle.ForeColor = System.Drawing.Color.White;
             this.labTitle.Location = new System.Drawing.Point(0, 0);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(304, 20);
+            this.labTitle.Size = new System.Drawing.Size(304, 31);
             this.labTitle.TabIndex = 0;
+            this.labTitle.Text = "招式";
+            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labTitle.Click += new System.EventHandler(this.labTitle_Click);
             this.labTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseDown);
             this.labTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseMove);
@@ -242,10 +246,11 @@
             // 
             this.labExit.AutoSize = true;
             this.labExit.BackColor = System.Drawing.Color.DarkRed;
+            this.labExit.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.labExit.ForeColor = System.Drawing.Color.White;
-            this.labExit.Location = new System.Drawing.Point(288, 0);
+            this.labExit.Location = new System.Drawing.Point(284, 3);
             this.labExit.Name = "labExit";
-            this.labExit.Size = new System.Drawing.Size(13, 12);
+            this.labExit.Size = new System.Drawing.Size(17, 18);
             this.labExit.TabIndex = 4;
             this.labExit.Text = "X";
             this.labExit.Click += new System.EventHandler(this.labExit_Click);

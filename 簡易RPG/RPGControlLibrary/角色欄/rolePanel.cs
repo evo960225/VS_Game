@@ -12,13 +12,14 @@ namespace RPGControl
 {
     public partial class rolePanel: UserControl
     {
-        public rolePanel()
-        {
+        Numerical num=new Numerical();
+
+        public rolePanel() {
             InitializeComponent();
         }
 
         private void butEnter_Click(object sender, EventArgs e) {
-            this.Hide();
+            this.Hide();   
         }
 
         private void labExit_Click(object sender, EventArgs e) {
@@ -45,5 +46,35 @@ namespace RPGControl
             }
         }
 
+        public void labFormat() {
+            labName.Text = num.name;
+            labLv.Text = string.Format("{0,3}", num.lv);
+            labHP.Text = string.Format("{0,-14}", num.maxHp) +
+                string.Format("+{0,-12}", num.addHp) +
+                string.Format("{0,4}", num.hp) + "/" + string.Format("{0,4}", num.maxHp + num.addHp);
+            labSP.Text = string.Format("{0,-14}", num.maxSp) +
+                string.Format("+{0,-12}", num.addSp) +
+                string.Format("{0,4}", num.sp) + "/" + string.Format("{0,4}", num.maxSp + num.addSp);
+            labAtk.Text = string.Format("{0,-14}", num.atk) +
+                string.Format("+{0,-16}", num.addAtk) +
+                string.Format("{0,4}", num.atk+num.addAtk);
+            labDef.Text = string.Format("{0,-14}", num.def) +
+                string.Format("+{0,-16}", num.addDef) +
+                string.Format("{0,4}", num.def + num.addDef);
+            
+        }
+
+        private void rolePanel_Load(object sender, EventArgs e) {
+            labFormat();
+        }
+
+        public void loadNum(Numerical rn) {
+            num = rn;
+            labFormat();
+        }
+        public void loadNum(string na, int l, int h, int s, int mh, int ms, int at, int de, int ahp, int asp, int aat, int adf) {
+            num = new Numerical(na, l, h, s, mh, ms, at, de, ahp, asp, aat, adf);
+            labFormat();
+        }
     }
 }

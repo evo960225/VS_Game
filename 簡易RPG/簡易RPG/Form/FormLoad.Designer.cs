@@ -28,13 +28,16 @@
             this.butLoad2 = new System.Windows.Forms.Button();
             this.butLoad3 = new System.Windows.Forms.Button();
             this.labName1 = new System.Windows.Forms.Label();
-            this.rolenameBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet = new 簡易RPG.Data.DatabaseDataSet();
             this.labName2 = new System.Windows.Forms.Label();
             this.labName3 = new System.Windows.Forms.Label();
+            this.rolenameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet = new 簡易RPG.Data.DatabaseDataSet();
             this.role_nameTableAdapter = new 簡易RPG.Data.DatabaseDataSetTableAdapters.role_nameTableAdapter();
+            this.roledataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.role_dataTableAdapter = new 簡易RPG.Data.DatabaseDataSetTableAdapters.role_dataTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.rolenameBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roledataBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // butLoad1
@@ -46,7 +49,8 @@
             this.butLoad1.Tag = "0";
             this.butLoad1.Text = "選擇";
             this.butLoad1.UseVisualStyleBackColor = true;
-            this.butLoad1.Click += new System.EventHandler(this.butLoad1_Click);
+            this.butLoad1.Visible = false;
+            this.butLoad1.Click += new System.EventHandler(this.butLoad_Click);
             // 
             // butLoad2
             // 
@@ -57,6 +61,8 @@
             this.butLoad2.Tag = "1";
             this.butLoad2.Text = "選擇";
             this.butLoad2.UseVisualStyleBackColor = true;
+            this.butLoad2.Visible = false;
+            this.butLoad2.Click += new System.EventHandler(this.butLoad_Click);
             // 
             // butLoad3
             // 
@@ -67,6 +73,8 @@
             this.butLoad3.Tag = "2";
             this.butLoad3.Text = "選擇";
             this.butLoad3.UseVisualStyleBackColor = true;
+            this.butLoad3.Visible = false;
+            this.butLoad3.Click += new System.EventHandler(this.butLoad_Click);
             // 
             // labName1
             // 
@@ -75,17 +83,6 @@
             this.labName1.Name = "labName1";
             this.labName1.Size = new System.Drawing.Size(0, 12);
             this.labName1.TabIndex = 3;
-            // 
-            // rolenameBindingSource
-            // 
-            this.rolenameBindingSource.DataMember = "role_name";
-            this.rolenameBindingSource.DataSource = this.databaseDataSet;
-            this.rolenameBindingSource.CurrentChanged += new System.EventHandler(this.rolenameBindingSource_CurrentChanged);
-            // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // labName2
             // 
@@ -103,9 +100,29 @@
             this.labName3.Size = new System.Drawing.Size(0, 12);
             this.labName3.TabIndex = 3;
             // 
+            // rolenameBindingSource
+            // 
+            this.rolenameBindingSource.DataMember = "role_name";
+            this.rolenameBindingSource.DataSource = this.databaseDataSet;
+            this.rolenameBindingSource.CurrentChanged += new System.EventHandler(this.rolenameBindingSource_CurrentChanged);
+            // 
+            // databaseDataSet
+            // 
+            this.databaseDataSet.DataSetName = "DatabaseDataSet";
+            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // role_nameTableAdapter
             // 
             this.role_nameTableAdapter.ClearBeforeFill = true;
+            // 
+            // roledataBindingSource1
+            // 
+            this.roledataBindingSource1.DataMember = "role_data";
+            this.roledataBindingSource1.DataSource = this.databaseDataSet;
+            // 
+            // role_dataTableAdapter
+            // 
+            this.role_dataTableAdapter.ClearBeforeFill = true;
             // 
             // FormLoad
             // 
@@ -123,6 +140,7 @@
             this.Load += new System.EventHandler(this.FormLoad_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rolenameBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roledataBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +157,8 @@
         private Data.DatabaseDataSet databaseDataSet;
         private Data.DatabaseDataSetTableAdapters.role_nameTableAdapter role_nameTableAdapter;
         public System.Windows.Forms.BindingSource rolenameBindingSource;
+        private Data.DatabaseDataSetTableAdapters.role_dataTableAdapter role_dataTableAdapter;
+        public System.Windows.Forms.BindingSource roledataBindingSource1;
 
     }
 }

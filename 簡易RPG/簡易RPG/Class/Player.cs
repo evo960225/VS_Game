@@ -6,40 +6,37 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
+using 簡易RPG.Class;
 
 namespace 簡易RPG {
-    public class Player {
+    public class Player:簡易RPG.Class.Organism {
 
         const string AdrImg = "..//..//images//人物2.png";
 
         const int ImgX = 50;
         const int ImgY = 50;
-
-        private string name;
-        private int hp;
-        private int sp;
-        private int atk;
-        private int def;
-
-        private int locX = 10;
-        private int locY = 7;
-        private int picLocX = 500;
-        private int picLocY = 350;
-
-        public Label pic;
-        private Bitmap img = new Bitmap(AdrImg);
         
 
         public Player() {
+            img = new Bitmap(AdrImg);
+            pic.Image = img;
+            this.numerical.name = "0";
+            this.numerical.hp = 1;
+            this.numerical.sp = 1;
+            this.numerical.atk = 1;
+            this.numerical.def = 1;
             createPic();
         }
 
         public Player(string na, int h = 1, int s = 1, int a = 1, int d = 1) {
-            name = na;
-            hp = h;
-            sp = s;
-            atk = a;
-            def = d;
+            img = new Bitmap(AdrImg);
+            pic.Image = img;
+            this.numerical.name = na;
+            this.numerical.hp = h;
+            this.numerical.sp = s;
+            this.numerical.atk = a;
+            this.numerical.def = d;
+            createPic();
         }
 
         public int getLocX {
@@ -53,7 +50,7 @@ namespace 簡易RPG {
         public void saveToText() {
 
             FileStream fs = new FileStream("in.txt", FileMode.Create);
-            string st = "Name:" + name + "\nHP:" + hp + "\nSP:" + sp + "\nA:" + atk + "\nD:" + def;
+            string st = "Name:" + this.numerical.name + "\nHP:" + this.numerical.hp + "\nSP:" + this.numerical.sp + "\nA:" + this.numerical.atk + "\nD:" + this.numerical.def;
             byte[] b = Encoding.Default.GetBytes(st);
 
             fs.Write(b, 0, b.Length);

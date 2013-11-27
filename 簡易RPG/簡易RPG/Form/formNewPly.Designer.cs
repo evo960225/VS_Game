@@ -245,5 +245,6 @@
         private Data.DatabaseDataSet databaseDataSet;
         private System.Windows.Forms.BindingSource rolenameBindingSource;
         private Data.DatabaseDataSetTableAdapters.role_nameTableAdapter role_nameTableAdapter;
+
     }
 }
