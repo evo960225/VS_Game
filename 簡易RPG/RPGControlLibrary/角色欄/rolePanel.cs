@@ -76,5 +76,13 @@ namespace RPGControl
             num = new Numerical(na, l, h, s, mh, ms, at, de, ahp, asp, aat, adf);
             labFormat();
         }
+
+        private void labTitle_Click(object sender, EventArgs e) {
+            
+        }
+
+        private void rolePanel_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
+        }
     }
 }

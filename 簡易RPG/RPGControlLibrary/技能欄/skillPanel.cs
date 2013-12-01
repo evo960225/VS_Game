@@ -50,5 +50,9 @@ namespace RPGControl
 
         }
 
+        private void skillPanel_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
+        }
+
     }
 }

@@ -98,7 +98,7 @@
             this.label1.Size = new System.Drawing.Size(17, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "X";
-            this.label1.Click += new System.EventHandler(this.labExit);
+            this.label1.Click += new System.EventHandler(this.from_Hide);
             // 
             // butBack
             // 
@@ -125,6 +125,7 @@
             this.Controls.Add(this.butContinue);
             this.Name = "EscPanel";
             this.Size = new System.Drawing.Size(193, 250);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EscPanel_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,6 +28,7 @@ namespace RPGControl
         bool isMouseDown;
         int locDX, locDY;
         private void labTitle_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
             isMouseDown = true;
             locDX = e.X;
             locDY = e.Y;
@@ -45,16 +46,20 @@ namespace RPGControl
             }
         }
 
-        private void labExit(object sender, EventArgs e) {
+        private void from_Hide(object sender, EventArgs e) {
             this.Hide();
+        }
+
+        private void labTitle_Click(object sender, EventArgs e) {
+            
         }
 
         private void butBack_Click(object sender, EventArgs e) {
 
         }
 
-        public void formBack_Show(object form,Type t) {
-            //
+        private void EscPanel_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
         }
     }
 }

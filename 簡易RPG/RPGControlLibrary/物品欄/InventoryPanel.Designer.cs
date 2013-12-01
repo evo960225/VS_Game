@@ -319,6 +319,7 @@
             this.Controls.Add(this.label1);
             this.Name = "InventoryPanel";
             this.Size = new System.Drawing.Size(254, 286);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.InventoryPanel_MouseDown);
             this.ResumeLayout(false);
 
         }

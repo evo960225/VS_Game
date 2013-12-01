@@ -41,5 +41,9 @@ namespace RPGControl
         private void labExit_Click(object sender, EventArgs e) {
             this.Visible = false;
         }
+
+        private void InventoryPanel_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
+        }
     }
 }

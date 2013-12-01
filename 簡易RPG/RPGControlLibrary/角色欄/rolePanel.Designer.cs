@@ -65,6 +65,7 @@
             this.labTitle.TabIndex = 1;
             this.labTitle.Text = "角色狀態";
             this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labTitle.Click += new System.EventHandler(this.labTitle_Click);
             this.labTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseDown);
             this.labTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseMove);
             this.labTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseUp);
@@ -182,9 +183,7 @@
             this.Name = "rolePanel";
             this.Size = new System.Drawing.Size(354, 274);
             this.Load += new System.EventHandler(this.rolePanel_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rolePanel_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

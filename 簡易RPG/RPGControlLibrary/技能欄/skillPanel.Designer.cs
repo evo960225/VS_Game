@@ -283,6 +283,7 @@
             this.Controls.Add(this.labTitle);
             this.Name = "skillPanel";
             this.Size = new System.Drawing.Size(304, 357);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.skillPanel_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

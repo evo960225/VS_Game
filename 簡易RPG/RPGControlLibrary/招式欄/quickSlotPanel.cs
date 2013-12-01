@@ -28,6 +28,7 @@ namespace RPGControl
         bool isMouseDown;
         int locDX, locDY;
         private void quickSlotPanel_MouseDown(object sender, MouseEventArgs e) {
+            this.BringToFront();
             isMouseDown = true;
             locDX = e.X;
             locDY = e.Y;
