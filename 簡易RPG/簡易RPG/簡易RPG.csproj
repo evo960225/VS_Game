@@ -92,11 +92,10 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="物品欄">
-      <HintPath>..\RPGControlLibrary\物品欄\bin\Debug\物品欄.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\AI.cs" />
+    <Compile Include="Class\MapBlock.cs" />
     <Compile Include="Class\NPC.cs" />
     <Compile Include="Class\Map.cs" />
     <Compile Include="Class\Monster.cs" />
@@ -138,6 +137,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\BattleSystem.cs" />
     <EmbeddedResource Include="Form\FormLoad.resx">
       <DependentUpon>FormLoad.cs</DependentUpon>
     </EmbeddedResource>

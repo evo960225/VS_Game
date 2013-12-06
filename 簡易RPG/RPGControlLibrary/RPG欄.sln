@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.20617.1 PREVIEW
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "快捷欄", "招式欄\快捷欄.csproj", "{B446FEE4-C7AF-4373-99A4-2F8F5E7D5B43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "技能欄", "技能欄\技能欄.csproj", "{97464A88-5BFE-4CC8-A686-CC6D2A058950}"
@@ -14,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "物品欄", "物品欄\物品欄.csproj", "{0D7A3234-C2A0-4436-BD7F-B49EEEB41FE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "裝備欄", "裝備攔\裝備欄.csproj", "{19C7C5D9-2C4F-4A62-AF39-A8330B03D306}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "一般規格欄", "一般規格欄\一般規格欄.csproj", "{2A419FE3-181E-4FFF-85F8-9A19DDBB2EDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "狀態欄", "狀態欄\狀態欄.csproj", "{E5BABE72-FEF6-47E6-95F4-5BFF9B937688}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibrary1", "WindowsFormsControlLibrary1\WindowsFormsControlLibrary1.csproj", "{50DDBEB1-B459-4249-B3D6-4A24820DE74C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,18 @@ Global
 		{19C7C5D9-2C4F-4A62-AF39-A8330B03D306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19C7C5D9-2C4F-4A62-AF39-A8330B03D306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19C7C5D9-2C4F-4A62-AF39-A8330B03D306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A419FE3-181E-4FFF-85F8-9A19DDBB2EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A419FE3-181E-4FFF-85F8-9A19DDBB2EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A419FE3-181E-4FFF-85F8-9A19DDBB2EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A419FE3-181E-4FFF-85F8-9A19DDBB2EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5BABE72-FEF6-47E6-95F4-5BFF9B937688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BABE72-FEF6-47E6-95F4-5BFF9B937688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5BABE72-FEF6-47E6-95F4-5BFF9B937688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5BABE72-FEF6-47E6-95F4-5BFF9B937688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DDBEB1-B459-4249-B3D6-4A24820DE74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DDBEB1-B459-4249-B3D6-4A24820DE74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DDBEB1-B459-4249-B3D6-4A24820DE74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DDBEB1-B459-4249-B3D6-4A24820DE74C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

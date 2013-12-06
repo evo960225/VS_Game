@@ -5,16 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using 簡易RPG.Class;
 
 namespace 簡易RPG {
-    class NPC : 簡易RPG.Class.Organism {
+    class NPC : AI {
 
-        enum Sex{
-            male   = 0 ,
-            female = 1
-        }
         Sex sex = Sex.male;
-
         const int sizeW = 50;
         const int sizeH = 50;
         const double SEC = 1000.0;
@@ -36,12 +32,16 @@ namespace 簡易RPG {
                 timer.Interval = timV;
                 timer.Start();
             }
-            img = new Bitmap(adrImg);
-            pic = new Label();
-            pic.Name = "NPC";
-            pic.Location = new Point(locX, locY);
-            pic.Size = new Size(sizeW, sizeH);
-            pic.Image = img;
+            loadPic("NPC",adrImg);
+        }
+
+        public void killed(){
+            pic.Visible = false;
+            timer.Dispose();
+        }
+
+        ~NPC() {
+
         }
 
         public void init() {

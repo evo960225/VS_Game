@@ -9,7 +9,7 @@ namespace 簡易RPG.Class {
         Random rnd = new Random((int)DateTime.Now.Ticks);
         public void timerMove(object sender, EventArgs e) {
             int vec = rnd.Next(0, 4);
-            move(vec);
+            picAndLocMaove(vec);
         }
     }
 }

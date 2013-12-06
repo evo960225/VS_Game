@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using 簡易RPG.Class;
 
 namespace 簡易RPG {
     public partial class FormNewPly : System.Windows.Forms.Form {

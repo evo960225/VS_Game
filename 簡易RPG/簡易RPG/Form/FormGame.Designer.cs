@@ -36,18 +36,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(999, 701);
-            this.ForeColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1000, 700);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.KeyPreview = true;
             this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormGame";
             this.Load += new System.EventHandler(this.FormGame_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormGame_Paint);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+
+
 
 
 

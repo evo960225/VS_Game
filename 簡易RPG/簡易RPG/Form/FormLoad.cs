@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
-
+using 簡易RPG.Class;
 
 namespace 簡易RPG {
     public partial class FormLoad : System.Windows.Forms.Form {
