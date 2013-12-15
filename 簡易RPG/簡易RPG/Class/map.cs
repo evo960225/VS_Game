@@ -14,36 +14,67 @@ using System.Drawing.Drawing2D;
 namespace 簡易RPG.Class {
     public class Map {
 
-        //***建置需更改***//
+        //***** 地址 *****//
+        //** 建置需更改 **//
         const string AdrMap = "..//..//map//";
         const string AdrImg = "..//..//images//";
-        
-        const int SizeX = 20;
-        const int SizeY = 14;
-        const int ImgSizeW = 50;
-        const int ImgSizeH = 50;
 
-        int bigSizeX = 24;
-        int bigSizeY = 24;
-        int locX = 0;
-        int locY = 0;
+        //***** 大小 *****//
+        const int SizeX     = 20;
+        const int SizeY     = 14;
+        const int ImgSizeW  = 50;
+        const int ImgSizeH  = 50;
+        int bigSizeX        = 24;
+        int bigSizeY        = 24;
+        int locX            =  0;
+        int locY            =  0;
+        int cameraFocusLocX = 10;
+        int cameraFocusLocY =  7;
 
-        
-        int[,] arrBigMap = new int[500, 500];
-        byte[] buf = new byte[10000];
-        string[] MapID = new string[] { "草地", "石路", "河流", "岩石", "樹林" };
-        Hashtable hashAI = new Hashtable();
-        Bitmap[] mapBlockImg = new Bitmap[4];
+        //***** 陣列 *****//
+        int   [,] arrBigMap   = new int   [200, 200];
+        string[,] arrInBigMap = new string[200, 200];
+        byte  []  buf         = new byte  [10000];
+        string[]  MapID       = new string[] { "草地", "石路", "河流", "岩石", "樹林" };
 
-        Bitmap imgPnl = new Bitmap(1000, 700);
-        Bitmap  bg=new Bitmap (1000,700);
-        Graphics g;
-        Label penel;
-        
+        //***** 物件 *****//
+        Bitmap[]    mapBlockImg = new Bitmap[5];
+        Bitmap      bmpBG       = new Bitmap(1000, 700);
+        Graphics    g;
+        Hashtable   hashOrg      = new Hashtable();
+        Timer       timRefresh;
+        Label       labPenel;
+        Label       cameraFocus;
 
         public Map() {
             fileLoad();
+            picLoad();
+            
+            Timer timRefresh = new Timer();
+            timRefresh.Tick+=timRefresh_Tick;
+            timRefresh.Start();
         }
+
+        private void timRefresh_Tick(object sender, EventArgs e) {
+            string name = "";
+            int x = 0, y = 0;
+            foreach (object key in hashOrg.Keys) {
+                
+                if (key.ToString().Substring(0, 3) == "NPC") {
+                    NPC npc = (NPC)hashOrg[key];
+                    name = npc.numerical.name;
+                    x = npc.loc.x;
+                    y = npc.loc.y;
+                } else if (key.ToString().Substring(0, 3) == "mon") {
+                    Monster monster = (Monster)hashOrg[key];
+                    name = monster.numerical.name;
+                    x = monster.loc.x;
+                    y = monster.loc.y;
+                }
+                arrInBigMap[y, x] = key.ToString();
+            }
+        }
+
 
         public void fileLoad() {
             
@@ -52,8 +83,8 @@ namespace 簡易RPG.Class {
             
             bigSizeX = 25;
             bigSizeY = 22;
-            locX = 0;
-            locY = 0;
+            locX     =  0;
+            locY     =  0;
 
             for(int i = 0; i < bigSizeY; ++i) {
                 for(int j = 0; j < bigSizeX; ++j) {
@@ -62,43 +93,32 @@ namespace 簡易RPG.Class {
             }
             fs.Close();
         }
-
         public void picLoad() {
             for(int i = 0; i < MapID.Length; ++i) {
                 mapBlockImg[i] = new Bitmap(AdrImg + MapID[i]+".png");
             }
         }
 
-        public void create(Label formBG) {
-            penel = formBG;
-            penel.Size = new Size(bigSizeX * 50, bigSizeY * 50);
-            bg = new Bitmap(bigSizeX * 50, bigSizeY * 50);
-            g = Graphics.FromImage(bg);
-            picLoad();
+        public void create(Label formbmpBG) {
+            labPenel      = formbmpBG;
+            labPenel.Size = new Size  (bigSizeX * 50, bigSizeY * 50);
+            bmpBG         = new Bitmap(bigSizeX * 50, bigSizeY * 50);
+            g             = Graphics.FromImage(bmpBG);
+
             for(int i = 0; i < bigSizeY; ++i) {
                 for(int j = 0; j < bigSizeX; ++j) {
                     g.DrawImage(mapBlockImg[arrBigMap[i, j]], new Point(j * 50, i * 50));
                 }
             }
-            formBG.BackgroundImage = bg;
-            imgPnl = new Bitmap(bigSizeX * 50, bigSizeY * 50);
-            Graphics pp = Graphics.FromImage(imgPnl);
-        }
-
-        public void drawIm(Label pic, Image im, Point po) {
-            Bitmap b = new Bitmap(50,50);
-            Graphics gg = Graphics.FromImage(b);
-            gg.DrawImage(mapBlockImg[arrBigMap[po.Y, po.X]], new Point(0, 0));
-            gg.DrawImage(new Bitmap(im), new Point(0, 0));
-            pic.Image = b;
+            formbmpBG.BackgroundImage = bmpBG;
         }
         
         public bool move(int vec) {
             sbyte xAdd = 0, yAdd = 0;
-            if(vec == 0 && locX != 0) {
+            if       (vec == 0 && locX != 0) {
                 --locX;
                 xAdd = 1;
-            } else if(vec == 1 && locY!=0) {
+            } else if(vec == 1 && locY != 0) {
                 --locY;
                 yAdd = 1;
             } else if(vec == 2 && locX+SizeX != bigSizeX) {
@@ -110,10 +130,7 @@ namespace 簡易RPG.Class {
             } else {
                 return false;
             }
-            penel.Location = new Point(-(locX * 50), -(locY * 50));
-            foreach (Label pic in hashAI.Values) {
-                pic.Location = new Point(pic.Location.X + (xAdd * 50), pic.Location.Y + (yAdd * 50));
-            }
+            labPenel.Location = new Point(-(locX * 50), -(locY * 50));
             return true;
         }
 
@@ -121,10 +138,105 @@ namespace 簡易RPG.Class {
             return new Point(0, 0);
         }
 
-        static int count = 0;
-        public void addOrganPic(Label ob) {
-            ob.Parent = penel;  
-            hashAI.Add(count++, ob);
+        public Queue searchMatrixObj(int distance,int x,int y) {
+            Queue qu = new Queue();
+            int size = distance * 2 + 1;
+            cameraFocusLocX = x;
+            cameraFocusLocY = y; 
+            for (int i = 0 ; i < size ; ++i) {
+                for (int j = 0 ; j < size ; ++j) {
+                    x = j + cameraFocusLocX - distance;
+                    y = i + cameraFocusLocY - distance;
+                    if (arrInBigMap[y, x]!=null && arrInBigMap[y, x].IndexOf("mon")==0) {
+                        qu.Enqueue(hashOrg[arrInBigMap[y, x]]);
+                    }
+                }
+            }
+            return qu;
+        }
+
+        public void setCamera(Label lab) {
+            lab.Parent = labPenel;
+            cameraFocus = lab;
+        }
+
+        static int objCount = 0;
+        public void addOrganPic(Label obj) {
+            obj.Parent = labPenel;
+            hashOrg.Add(objCount++, obj);
+        }
+
+
+        public void addOrganPic(object obj) {
+            if (obj.GetType() == typeof(NPC)) {
+                NPC npc = (NPC)obj;
+                npc.pic.Parent = labPenel;
+                hashOrg.Add(npc.numerical.name + objCount, npc);
+            } else if (obj.GetType() == typeof(Monster)) {
+                Monster monster = (Monster)obj;
+                monster.pic.Parent = labPenel;
+                hashOrg.Add(monster.numerical.name + objCount, monster);
+            }
+            objCount++;
+        }
+
+        public void removeHashOrg(string name) {
+            
+        }
+
+        public void searchSquare(int size) {
+
+        }
+        public void searchSquare(string name, int size) {
+
+        }
+        public Queue<string> searchSquare(point loc, int size) {
+            Queue<string> qu = new Queue<string>();
+            size = size * 2 + 1;
+            for (int i = 0 ; i < size ; ++i) {
+                if (loc.y - 1 + i >= 0) {
+                    for (int j = 0 ; j < size ; ++j) {
+                        if (loc.x - 1 + j >= 0) {
+                            qu.Enqueue(arrInBigMap[i, j]);
+                        }
+                    }
+                }
+            }
+            return qu;
+        }
+
+        public void searchCross(int size) {
+
+        }
+        public void searchCross(string name, int size) {
+
+        }
+        public void searchCross(point loc, int size) {
+
+        }
+
+        public void searchKnightStep(int size) {
+
+        }
+        public void searchKnightStep(string name, int size) {
+
+        }
+        public void searchKnightStep(point loc, int size) {
+
+        }
+
+        public void searchX(int size) {
+
+        }
+        public void searchX(string name, int size) {
+
+        }
+        public void searchX(point loc, int size) {
+
+        }
+
+        public void searchLozenge(point loc, int size) {
+
         }
     }
 }

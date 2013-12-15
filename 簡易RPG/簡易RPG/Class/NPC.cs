@@ -10,18 +10,8 @@ using 簡易RPG.Class;
 namespace 簡易RPG {
     class NPC : AI {
 
-        Sex sex = Sex.male;
-        const int sizeW = 50;
-        const int sizeH = 50;
-        const double SEC = 1000.0;
-
-        //座標
-        int timV = (int)(1 * SEC);
-
         string adrImg = "..\\..\\images\\人物.png";
         bool isStand;
-
-        Timer timer;
         
         public NPC(bool stand = true) {
             numerical.name = "NPC";

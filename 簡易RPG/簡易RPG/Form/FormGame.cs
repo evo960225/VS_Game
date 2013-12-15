@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -15,6 +16,7 @@ using 簡易RPG.Class;
 
 namespace 簡易RPG
 {
+    
     public partial class FormGame : System.Windows.Forms.Form
     {
         //Size
@@ -22,158 +24,138 @@ namespace 簡易RPG
         public const int SizeY = 700;
 
         //Pic
-        Label bgImg = new Label();
-        Map map;
-        Player ply;
-        NPC npc = new NPC(false);
+        public Label labBG = new Label();
+        Map       map;
+        Player    ply;
+        NPC       npc     = new NPC(false);
         Monster[] monster = new Monster[4];
 
         //userControl
-        EscPanel Esc = new EscPanel();
-        skillPanel skill = new skillPanel();
-        rolePanel rolePnl = new rolePanel();
-        quickSlotPanel qukPnl = new quickSlotPanel();
-        InventoryPanel invPnl = new InventoryPanel();
+        EscPanel       EscPnl   = new EscPanel();
+        skillPanel     skillPnl = new skillPanel();
+        rolePanel      rolePnl  = new rolePanel();
+        quickSlotPanel qukPnl   = new quickSlotPanel();
+        InventoryPanel invPnl   = new InventoryPanel();
 
-        BattleSystem BS = new BattleSystem();
+        //System
+        BattleSystem     BS;
+
         //Application
         KeyMessageFilter filter;
 
-
+        //Function
         public FormGame(Player rply) {
             InitializeComponent();
+            BS     = new BattleSystem(this);
             filter = new KeyMessageFilter(this);
             Application.AddMessageFilter(filter);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 
             ply = rply;
             rolePnl.loadNum(ply.numerical.name, ply.numerical.lv, ply.numerical.hp, ply.numerical.sp, ply.numerical.hp, ply.numerical.sp, ply.numerical.atk, ply.numerical.def, 0, 0, 0, 0);
             InitObject();  
         }
 
-        void bgImg_Paint(object sender, PaintEventArgs e) { 
-            
-        }
-
         void InitObject() {
 
-            bgImg.Paint += bgImg_Paint;
-            bgImg.Size = new Size(1000, 700); 
-            bgImg.Visible = true;
-            this.Controls.Add(bgImg);
+            labBG.Size = new Size(1000, 700); 
+            labBG.Visible = true;
+            this.Controls.Add(labBG);
 
             ply.loadPly();
             this.Controls.Add(ply.pic);
             this.Controls.Add(npc.pic);
 
             map = new Map();
-            map.create(bgImg);
-            map.drawIm(ply.pic, ply.img, new Point(ply.loc.x, ply.loc.y));
-
-            map.addOrganPic(npc.pic);
+            map.create(labBG);
+            map.setCamera(ply.pic);
+            map.addOrganPic(npc);
            
             ply.pic.BringToFront();
             npc.pic.BringToFront();
             
             for (int i = 0 ; i < 4 ; ++i) {
-                monster[i] = new Monster();
+                monster[i] = new Monster("mon" + i);
                 this.Controls.Add(monster[i].pic);
-                map.addOrganPic(monster[i].pic);
+                map.addOrganPic(monster[i]);
                 monster[i].pic.BringToFront();
             }
 
-            Esc.Visible = false;
-            rolePnl.Visible = false;
-            skill.Visible = false;
-            qukPnl.Visible = false;
-            invPnl.Visible = false;
-            this.Controls.Add(Esc);
+            EscPnl  .Visible = false;
+            rolePnl .Visible = false;
+            skillPnl.Visible = false;
+            qukPnl  .Visible = false;
+            invPnl  .Visible = false;
+            this.Controls.Add(EscPnl);
             this.Controls.Add(rolePnl);
-            this.Controls.Add(skill);
+            this.Controls.Add(skillPnl);
             this.Controls.Add(qukPnl);
             this.Controls.Add(invPnl);
-        }
-
-        protected override void OnFormClosed(FormClosedEventArgs e) {
-            base.OnFormClosed(e);
-            Application.Exit();
         }
 
         private void FormGame_Load(object sender, EventArgs e) {
             
         }
 
-         public void move(int code){
-             ply.move(code - 37); 
-             bool mapMove = true;
-             if        (code == 37 && ply.pic.Location.X > 500) {
-                 mapMove = false;
-             } else if (code == 38 && ply.pic.Location.Y > 350) {
-                 mapMove = false;
-             } else if (code == 39 && ply.pic.Location.X < 500) {
-                 mapMove = false;
-             } else if (code == 40 && ply.pic.Location.Y < 350) {
-                 mapMove = false;
-             }
-             if (mapMove && !map.move(code - 37) || (!mapMove)) {
-                ply.picMove(code - 37); 
-             }
-             map.drawIm(ply.pic, ply.img, new Point(ply.loc.x, ply.loc.y));
+        public void move(int code) {
+            ply.move(code - 37);
+            ply.picMove(code - 37);
+            map.move(code - 37);
         }
 
-         public void KeyProcessing(int keycode) {
-             if (keycode >= 37 && keycode <= 40) {
-                 move(keycode);
-             } else if (keycode >> 4 == 3) {
+        public void KeyProcessing(int keycode) {
+            if (keycode >= 37 && keycode <= 40) {
+                move(keycode);
+            } else if (keycode >> 4 == 3) {
 
-             } else {
-                 switch ((Keys)keycode) {
-                     case Keys.Escape:
-                         Esc.Location = new Point(400, 300);
-                         Esc.Show();
-                         Esc.BringToFront();break;
-                     case Keys.A:
-                         bool iskill=BS.Batttle(ply.numerical,ply.loc, npc.numerical,npc.loc);
-                         if (iskill) npc.killed();
-                         break;
-                     case Keys.C:
-                         rolePnl.Show();
-                         rolePnl.BringToFront();break;
-                     case Keys.D:
-                         break;
-                     case Keys.I:
-                         invPnl.Show();
-                         invPnl.BringToFront();break;
-                     case Keys.K:
-                         skill.Show();
-                         skill.BringToFront(); break;
-                     case Keys.L:
-                         //Quest
-                         break;
-                     case Keys.Q:
-                         qukPnl.Location = new Point(350, 650);
-                         qukPnl.Show();
-                         qukPnl.BringToFront();break;
-                 }
+            } else {
+                switch ((Keys)keycode) {
+                    case Keys.Escape:
+                        EscPnl.Location = new Point(400, 300);
+                        EscPnl.Show();
+                        EscPnl.BringToFront(); break;
+                    case Keys.A:
+                        //error
+                        Queue qu = map.searchMatrixObj(1, ply.loc.x, ply.loc.y);
+                        BS.Batttle(ply, qu);
+                        break;
+                    case Keys.C:
+                        rolePnl.Show();
+                        rolePnl.BringToFront(); break;
+                    case Keys.D:
+                        break;
+                    case Keys.I:
+                        invPnl.Show();
+                        invPnl.BringToFront(); break;
+                    case Keys.K:
+                        skillPnl.Show();
+                        skillPnl.BringToFront(); break;
+                    case Keys.L:
+                        //Quest
+                        break;
+                    case Keys.Q:
+                        qukPnl.Location = new Point(350, 650);
+                        qukPnl.Show();
+                        qukPnl.BringToFront(); break;
+                }
 
-             }
-         }
+            }
+        }
 
-         private void FormGame_Paint(object sender, PaintEventArgs e) {
-             
-         }
-
+        protected override void OnFormClosed(FormClosedEventArgs e) {
+            base.OnFormClosed(e);
+            Application.Exit();
+        }
     }
 
     public class KeyMessageFilter : IMessageFilter {
         private enum KeyMessages {
-            WM_KEYFIRST = 0x100,
-            WM_KEYDOWN = 0x100,
-            WM_KEYUP = 0x101,
-            WM_CHAR = 0x102,
+            WM_KEYFIRST   = 0x100,
+            WM_KEYDOWN    = 0x100,
+            WM_KEYUP      = 0x101,
+            WM_CHAR       = 0x102,
             WM_SYSKEYDOWN = 0x0104,
-            WM_SYSKEYUP = 0x0105,
-            WM_SYSCHAR = 0x0106,
+            WM_SYSKEYUP   = 0x0105,
+            WM_SYSCHAR    = 0x0106,
         }
 
         [DllImport("user32.dll")]
@@ -206,6 +188,6 @@ namespace 簡易RPG
             return false;
         }
     }
-}
 
+}
 

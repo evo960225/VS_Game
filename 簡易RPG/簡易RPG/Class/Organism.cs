@@ -17,14 +17,16 @@ namespace 簡易RPG.Class {
         public Bitmap img;
         public Label pic = new Label();
 
-        public point loc = new point(10, 7);
-        public point picLoc = new point(500, 350); 
+        public point loc    = new point(10, 7);
+        public point picLoc = new point(500, 350);
+        public int sizeW = 50;
+        public int sizeH = 50;
 
         sbyte xAdd, yAdd;
         public void move(int vec) {
-            if (vec == 0 ) {
+            if (vec == 0 && loc.x > 0) {
                 --loc.x;
-            } else if (vec == 1) {
+            } else if (vec == 1 && loc.y > 0) {
                 --loc.y;
             } else if (vec == 2) {
                 ++loc.x;
@@ -47,10 +49,10 @@ namespace 簡易RPG.Class {
         }
         public void picAndLocMaove(int vec) {
             xAdd = 0; yAdd = 0;
-            if (vec == 0) {
+            if (vec == 0 && loc.x > 0) {
                 --loc.x;
                 xAdd = -1;
-            } else if (vec == 1) {
+            } else if (vec == 1&& loc.y > 0) {
                 --loc.y;
                 yAdd = -1;
             } else if (vec == 2) {
@@ -68,7 +70,7 @@ namespace 簡易RPG.Class {
             img = new Bitmap(adr);
             pic.Image = img;
             pic.Location = new Point(picLoc.x, picLoc.y);
-            pic.Size = new Size(50, 50);
+            pic.Size = new Size(sizeW, sizeH);
             pic.BackColor = Color.Transparent;
         }
     }
@@ -79,6 +81,19 @@ namespace 簡易RPG.Class {
         public point(int a, int b) {
             x = a;
             y = b;
+        }
+    }
+
+    public class numAndLoc {
+        string name;
+        Numerical numerical;
+        point loc;
+        point picLoc;
+        public numAndLoc(string iname, Numerical num, point dataPo, point visPo) {
+            name = iname;
+            numerical = num;
+            loc = dataPo;
+            picLoc = visPo;
         }
     }
 }

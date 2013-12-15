@@ -13,7 +13,6 @@ using 簡易RPG.Class;
 namespace 簡易RPG {
     public partial class FormNewPly : System.Windows.Forms.Form {
 
-        FormGame formgame;
         Player ply;
 
         public FormNewPly() {
@@ -30,7 +29,7 @@ namespace 簡易RPG {
             ply = new Player(tetName.Text, (int)numHP.Value, (int)numSP.Value, (int)numA.Value, (int)numD.Value);
             ply.saveToText();
             this.Hide();
-            formgame = new FormGame(ply);
+            FormGame formgame = new FormGame(ply);
             formgame.Visible = true;
         }
 

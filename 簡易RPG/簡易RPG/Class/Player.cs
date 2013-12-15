@@ -36,6 +36,7 @@ namespace 簡易RPG.Class {
         }
         public Player(Numerical n) {
             numerical = n;
+            loadPic("picPly", AdrImg);
         }
 
         public void saveToText() {
@@ -49,7 +50,6 @@ namespace 簡易RPG.Class {
         }
 
         public void loadPly() {
-
             FileStream fs = new FileStream("in.txt", FileMode.Open);
             string st;
             byte[] b = new byte[1000];

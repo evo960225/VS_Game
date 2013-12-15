@@ -40,10 +40,9 @@
             this.ForeColor = System.Drawing.Color.Transparent;
             this.KeyPreview = true;
             this.Name = "FormGame";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormGame";
             this.Load += new System.EventHandler(this.FormGame_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormGame_Paint);
             this.ResumeLayout(false);
 
         }
